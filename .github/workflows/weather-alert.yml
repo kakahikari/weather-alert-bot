@@ -1,0 +1,28 @@
+name: Weather Alert
+
+on:
+  schedule:
+    # 12:00 UTC = 20:00 台灣時間
+    - cron: '0 12 * * *'
+  workflow_dispatch: # 手動觸發
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run weather alert
+        run: node src/index.mjs
+        env:
+          CWA_API_TOKEN: ${{ secrets.CWA_API_TOKEN }}
+          CWA_DATASET_ID: ${{ secrets.CWA_DATASET_ID }}
+          CWA_LOCATION: ${{ secrets.CWA_LOCATION }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GIST_ID: ${{ secrets.GIST_ID }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}

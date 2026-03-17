@@ -1,0 +1,13 @@
+{
+  "name": "weather-alert-bot",
+  "version": "1.0.0",
+  "description": "GitHub Actions 天氣警報 Bot — 每日推送天氣警報到 Telegram",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.mjs",
+    "dev": "node --env-file=.env src/index.mjs"
+  }
+}
