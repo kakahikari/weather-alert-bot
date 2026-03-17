@@ -78,6 +78,7 @@ async function main() {
 
   const message = [
     `*${CWA_LOCATION}明日天氣警報* (${formatMMDD(tomorrow)})`,
+    ``,
     `明日天氣預報：${tomorrowWeather.wxDescription} ${tomorrowWeather.minT}~${tomorrowWeather.maxT}°C`,
     ...alerts,
   ].join('\n');
