@@ -17,6 +17,18 @@ function getTaiwanDate(offsetDays = 0) {
   }).format(target);
 }
 
+// 根據天氣描述回傳對應 emoji（參照 CWA 天氣描述代碼表，代碼 1~32）
+function getWeatherEmoji(description) {
+  if (/雷/.test(description)) return '⛈️';
+  if (/雪/.test(description)) return '❄️';
+  if (/雨/.test(description)) return '🌧️';
+  if (/霧/.test(description)) return '🌫️';
+  if (/陰/.test(description)) return '☁️';
+  if (/多雲/.test(description)) return '⛅';
+  if (/晴/.test(description)) return '☀️';
+  return '';
+}
+
 // 格式化日期為 MM/DD
 function formatMMDD(dateStr) {
   return dateStr.slice(5).replace('-', '/');
@@ -89,9 +101,9 @@ async function main() {
   }
 
   const message = [
-    `<b>${CWA_LOCATION}明日天氣警報</b> (${formatMMDD(tomorrow)})`,
+    `<b>${CWA_LOCATION}明日天氣</b> (${formatMMDD(tomorrow)})`,
     ``,
-    `明日天氣預報：${tomorrowWeather.wxDescription} ${tomorrowWeather.minT}~${tomorrowWeather.maxT}°C`,
+    `${getWeatherEmoji(tomorrowWeather.wxDescription)} 天氣預報: ${tomorrowWeather.wxDescription} ${tomorrowWeather.minT}~${tomorrowWeather.maxT}°C`,
     ...alerts,
   ].join('\n');
 

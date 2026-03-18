@@ -59,3 +59,8 @@ npm run dev
 | 臺南市 | `F-D0047-077` |
 
 完整列表請參考 [CWA 開放資料平台](https://opendata.cwa.gov.tw/)。
+
+## 參考文件
+
+- [預報 XML 產品預報因子欄位中文說明表（含天氣描述代碼表）](https://opendata.cwa.gov.tw/opendatadoc/MFC/A0012-001.pdf)
+- [Opendata API 線上說明文件](https://opendata.cwa.gov.tw/dist/opendata-swagger.html)

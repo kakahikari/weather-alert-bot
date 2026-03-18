@@ -9,7 +9,7 @@ export function checkAlerts(tomorrow, yesterday) {
 
   // 條件 a: 明天有雨 > 60%
   if (tomorrow.maxRainProb > 60) {
-    alerts.push(`⚠️ 明日有雨：降雨機率 ${tomorrow.maxRainProb}%`);
+    alerts.push(`⚠️ 明日有雨: 降雨機率 ${tomorrow.maxRainProb}%`);
   }
 
   // 條件 b: 昨日與明日溫差 >= 5°C
@@ -18,7 +18,7 @@ export function checkAlerts(tomorrow, yesterday) {
     if (diff >= 5) {
       const direction = tomorrow.avgT < yesterday.avgT ? '降溫' : '升溫';
       alerts.push(
-        `⚠️ ${direction}注意：與昨日差 ${diff.toFixed(1)}°C` +
+        `⚠️ ${direction}注意: 與昨日差 ${diff.toFixed(1)}°C` +
         ` (明 ${tomorrow.avgT}°C / 昨 ${yesterday.avgT}°C)`
       );
     }
@@ -28,7 +28,7 @@ export function checkAlerts(tomorrow, yesterday) {
   const dayNightDiff = tomorrow.maxT - tomorrow.minT;
   if (dayNightDiff >= 7) {
     alerts.push(
-      `⚠️ 日夜溫差大：差 ${dayNightDiff.toFixed(1)}°C` +
+      `⚠️ 日夜溫差大: 差 ${dayNightDiff.toFixed(1)}°C` +
       ` (高 ${tomorrow.maxT}°C / 低 ${tomorrow.minT}°C)`
     );
   }
