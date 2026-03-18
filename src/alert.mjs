@@ -27,10 +27,7 @@ export function checkAlerts(tomorrow, yesterday) {
   // 條件 c: 明日日夜溫差 >= 7°C
   const dayNightDiff = tomorrow.maxT - tomorrow.minT;
   if (dayNightDiff >= 7) {
-    alerts.push(
-      `⚠️ 日夜溫差大: 差 ${dayNightDiff.toFixed(1)}°C` +
-      ` (高 ${tomorrow.maxT}°C / 低 ${tomorrow.minT}°C)`
-    );
+    alerts.push(`⚠️ 日夜溫差大: 差 ${dayNightDiff.toFixed(1)}°C`);
   }
 
   return alerts;
