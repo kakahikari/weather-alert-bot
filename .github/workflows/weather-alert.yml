@@ -2,9 +2,10 @@ name: Weather Alert
 
 on:
   schedule:
-    # 12:00 UTC = 20:00 台灣時間
-    - cron: '0 12 * * *'
-  workflow_dispatch: # 手動觸發
+    # 12:15 UTC = 20:15 台灣時間
+    - cron: '15 12 * * *'
+  # 手動觸發
+  workflow_dispatch:
 
 jobs:
   alert:
