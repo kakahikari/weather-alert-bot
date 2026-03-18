@@ -6,7 +6,9 @@ import { sendMessage } from './telegram.mjs';
 // 取得台灣時間的日期（YYYY-MM-DD 格式）
 function getTaiwanDate(offsetDays = 0) {
   const now = new Date();
+  // 86400000 = 24小時的毫秒數
   const target = new Date(now.getTime() + offsetDays * 86400000);
+  // en-CA 的日期格式為 YYYY-MM-DD
   return new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Taipei',
     year: 'numeric',
