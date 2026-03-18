@@ -35,7 +35,7 @@ async function main() {
   const required = { CWA_API_TOKEN, CWA_DATASET_ID, CWA_LOCATION, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, GIST_ID, GH_TOKEN };
   for (const [key, val] of Object.entries(required)) {
     if (!val) {
-      console.error(`缺少環境變數: ${key}`);
+      console.error(`[⚠️ 錯誤] 缺少環境變數: ${key}`);
       process.exit(1);
     }
   }
@@ -49,6 +49,16 @@ async function main() {
   const forecastData = await fetchForecast(CWA_API_TOKEN, CWA_DATASET_ID, CWA_LOCATION);
   const tomorrowWeather = parseTomorrowWeather(forecastData, tomorrow, CWA_LOCATION);
   console.log('明日天氣:', tomorrowWeather);
+
+  // 防呆: 確保取得的溫度資料有效，避免後續邏輯出錯且保護 Gist 歷史資料
+  if (
+    typeof tomorrowWeather.minT !== 'number' ||
+    typeof tomorrowWeather.maxT !== 'number' ||
+    typeof tomorrowWeather.avgT !== 'number'
+  ) {
+    console.error('[⚠️ 錯誤] 明日天氣資料缺少必要的溫度資訊');
+    process.exit(1);
+  }
 
   // 2. 讀取 Gist 中的昨天資料
   console.log('正在讀取歷史資料...');
@@ -88,6 +98,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error('執行失敗:', err);
+  console.error('[⚠️ 錯誤] 執行失敗:', err);
   process.exit(1);
 });
