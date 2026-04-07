@@ -94,18 +94,14 @@ async function main() {
     avgT: tomorrowWeather.avgT,
   });
 
-  // 5. 有觸發條件才發送 Telegram
-  if (alerts.length === 0) {
-    console.log('無警報條件觸發，不發送通知');
-    return;
-  }
-
-  const message = [
+  // 5. 發送 Telegram 通知
+  const messageParts = [
     `<b>${CWA_LOCATION}明日天氣</b> (${formatMMDD(tomorrow)})`,
     ``,
     `${getWeatherEmoji(tomorrowWeather.wxDescription)} 天氣預報: ${tomorrowWeather.wxDescription} ${tomorrowWeather.minT}~${tomorrowWeather.maxT}°C`,
     ...alerts,
-  ].join('\n');
+  ];
+  const message = messageParts.join('\n');
 
   console.log('發送通知:\n' + message);
   await sendMessage(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, message);

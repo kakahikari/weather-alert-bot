@@ -1,6 +1,6 @@
 # Weather Alert Bot
 
-GitHub Actions 排程天氣警報 Bot，每日抓取中央氣象署預報資料，符合條件時推送 Telegram 通知
+GitHub Actions 排程天氣警報 Bot，每日抓取中央氣象署預報資料，推送 Telegram 通知
 
 ## 警報條件
 
