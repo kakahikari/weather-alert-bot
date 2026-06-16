@@ -64,3 +64,7 @@ npm run dev
 
 - [預報 XML 產品預報因子欄位中文說明表（含天氣描述代碼表）](https://opendata.cwa.gov.tw/opendatadoc/MFC/A0012-001.pdf)
 - [Opendata API 線上說明文件](https://opendata.cwa.gov.tw/dist/opendata-swagger.html)
+
+---
+
+*最後更新：2026-06-17*
