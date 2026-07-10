@@ -61,7 +61,8 @@ export async function writeGist(gistId, token, data) {
   });
 
   if (!res.ok) {
-    console.warn(`Gist 寫入失敗: ${res.status}`);
+    console.error(`[⚠️ 錯誤] Gist 寫入失敗: ${res.status}`);
+    process.exitCode = 1;
   } else {
     console.log('Gist 更新成功');
   }
